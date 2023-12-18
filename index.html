@@ -4,14 +4,93 @@
   <meta charset="UTF-8">
   <title>CGPA Calculator</title>
   <style>
-    /* Add some basic styling */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    input[type="text"], input[type="number"], select {
-      margin-bottom: 10px;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #1f1f1f; /* Cool dark grey background */
+  color: #ccc; /* Light grey text color */
+}
+
+h1 {
+  text-align: center;
+  color: #ddd; /* Lighter heading color */
+}
+
+#courseInput {
+  background-color: #2b2b2b; /* Darker grey input background */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1); /* Adjusted shadow color */
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #aaa; /* Lighter label color */
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: calc(100% - 12px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #444; /* Darker border color */
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #333; /* Slightly lighter input background */
+  color: #ccc; /* Light grey text color for inputs */
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#addedCourses {
+  background-color: #2b2b2b; /* Darker grey background for added courses */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+#coursesList li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #444; /* Darker border color */
+  padding-bottom: 5px;
+}
+
+#coursesList li:last-child {
+  border-bottom: none;
+}
+
+span {
+  font-weight: bold;
+}
+
+select {
+  width: 70px;
+  color: #ccc; /* Light grey text color for select */
+}
+
+#cgpaResult {
+  margin-top: 20px;
+  text-align: center;
+  color: #ddd; /* Lighter text color for result */
+}
+
+
   </style>
 </head>
 <body>
