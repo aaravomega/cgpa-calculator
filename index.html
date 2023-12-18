@@ -35,7 +35,6 @@
     </select><br>
     <button onclick="addCourse()">Add Course</button>
   </div>
-  <div id="cgpaResult"></div>
 
   <div id="addedCourses">
     <h2>Added Courses</h2>
@@ -62,6 +61,7 @@
       document.getElementById("courseName").value = "";
       document.getElementById("credit").value = "";
       document.getElementById("grade").selectedIndex = 0;
+
       displayAddedCourses();
       calculateCGPA();
     }
@@ -70,9 +70,43 @@
       const coursesList = document.getElementById("coursesList");
       coursesList.innerHTML = ""; // Clear previous content
 
-      courses.forEach(course => {
+      courses.forEach((course, index) => {
         const listItem = document.createElement("li");
-        listItem.textContent = `${course.name} - Credits: ${course.credit}, Grade: ${course.grade}`;
+        const courseInfo = document.createElement("span");
+        courseInfo.textContent = `${course.name} - Credits: ${course.credit}, Grade: `;
+
+        const gradeSelect = document.createElement("select");
+
+        // Create grade options dynamically
+        const gradeOptions = [
+            { value: 10, text: "A" },
+            { value: 9, text: "A-" },
+            { value: 8, text: "B" },
+            { value: 7, text: "B-" },
+            { value: 6, text: "C" },
+            { value: 5, text: "C-" },
+            { value: 4, text: "D" },
+            { value: 2, text: "E" },
+            { value: 0, text: "NC" }
+          // Add other grade options as needed
+        ];
+
+        gradeOptions.forEach(option => {
+          const gradeOption = document.createElement("option");
+          gradeOption.value = option.value;
+          gradeOption.textContent = option.text;
+          gradeSelect.appendChild(gradeOption);
+        });
+
+        gradeSelect.value = course.grade; // Set the current grade as the selected value
+
+        gradeSelect.onchange = (event) => {
+          courses[index].grade = parseFloat(event.target.value);
+          calculateCGPA();
+        };
+
+        listItem.appendChild(courseInfo);
+        listItem.appendChild(gradeSelect);
         coursesList.appendChild(listItem);
       });
     }
